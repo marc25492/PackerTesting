@@ -1,13 +1,12 @@
 {
   "variables": {
     "image_name": "myubuntu",
-    "aws_region": "us-west-2",
-    "ami_id": "ami-63ac5803",
+    "aws_region": "eu-west-2",
+    "ami_id": "ami-ede2e889",
     "vpc_id": "",
     "subnet_id": "",
-    "security_group_id": "sg-616f5206",
-    "instance_type": "t2.large",
-    "ssh_key": "/Users/adam/.ssh/apatterson_dp"
+    "security_group_id": "sg-03c57b6a",
+    "instance_type": "t2.micro"
   },
   "builders": [
     {
