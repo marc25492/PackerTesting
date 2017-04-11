@@ -18,7 +18,7 @@ node {
     stage 'Build'
         withCredentials(
       [
-        [$class: 'StringBinding', credentialsId: 'AWS_ACCESS_KEY', variable: 'AWS_ACCESS_KEY'],
+        [$class: 'StringBinding', credentialsId: 'AWS_ACCESS_CREDENTIALS', variable: 'AWS_ACCESS_KEY'],
         [$class: 'StringBinding', credentialsId: 'AWS_SECRET_KEY', variable: 'AWS_SECRET_KEY']
       ])
       sh "/usr/local/packer build -var 'aws_access_key=$AWS_ACCESS_KEY'  -var 'aws_secret_key=$AWS_SECRET_KEY' ${packer_file}"
