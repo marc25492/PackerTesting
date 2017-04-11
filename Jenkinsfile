@@ -1,9 +1,11 @@
 #!groovy
 
 node {
-    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'mylogin',
-                    usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
-
+  environment {
+      aws_access_key = credentials('AWS_ACCESS_CREDENTIALS')
+      aws_secret_key = credentials('AWS_SECRET_KEY')
+  }  
+    
   def err = null
   currentBuild.result = "SUCCESS"
 
