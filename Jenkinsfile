@@ -19,7 +19,7 @@ node {
       sh "/usr/local/packer validate ${packer_file}"
 
     stage 'Build'
-      sh "/usr/local/packer build -var 'aws_access_key=AWS_ACCESS_KEY'  -var 'aws_secret_key=AWS_SECRET_KEY' ${packer_file}"
+      sh "/usr/local/packer build -var 'aws_access_key=$AWS_ACCESS_KEY'  -var 'aws_secret_key=$AWS_SECRET_KEY' ${packer_file}"
 
     stage 'Test'
       print "Testing goes here."
