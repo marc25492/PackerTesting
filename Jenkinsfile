@@ -1,10 +1,7 @@
 #!groovy
 
 node {
-  environment {
-      AWS_ACCESS_KEY = credentials('AWS_ACCESS_CREDENTIALS')
-      AWS_SECRET_KEY = credentials('AWS_SECRET_KEY')
-  }  
+
     
   def err = null
   currentBuild.result = "SUCCESS"
@@ -19,6 +16,11 @@ node {
       sh "/usr/local/packer validate ${packer_file}"
 
     stage 'Build'
+        withCredentials(
+      [
+        [$class: 'StringBinding', credentialsId: 'AWS_ACCESS_KEY', variable: 'AWS_ACCESS_KEY'],
+        [$class: 'StringBinding', credentialsId: 'AWS_SECRET_KEY', variable: 'AWS_SECRET_KEY']
+      ])
       sh "/usr/local/packer build -var 'aws_access_key=$AWS_ACCESS_KEY'  -var 'aws_secret_key=$AWS_SECRET_KEY' ${packer_file}"
 
     stage 'Test'
