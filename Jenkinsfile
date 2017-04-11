@@ -1,6 +1,8 @@
 #!groovy
 
 node {
+    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'mylogin',
+                    usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
 
   def err = null
   currentBuild.result = "SUCCESS"
